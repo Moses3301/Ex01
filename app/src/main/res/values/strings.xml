@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Ex01</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="gander">Gander</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="birth_date">Birthday</string>
+    <string name="submit">Submit</string>
+    <string name="select_avatar_image">Select Avatar Image</string>
+</resources>
