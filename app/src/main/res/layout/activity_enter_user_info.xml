@@ -64,36 +64,30 @@
         android:text="Gander"
         android:textSize="18sp"
         tools:text="@string/gander" />
-
-    <LinearLayout
-        android:id="@+id/ganderLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/maleRadioButton"
+        <RadioGroup
+            android:id="@+id/gendersRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/male" />
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/maleRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male" />
 
-        <RadioButton
-            android:id="@+id/femaleRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/female" />
+            <RadioButton
+                android:id="@+id/femaleRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female" />
 
-        <RadioButton
-            android:id="@+id/OtherRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/other" />
-    </LinearLayout>
-
+            <RadioButton
+                android:id="@+id/OtherRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/other" />
+        </RadioGroup>
     <EditText
         android:id="@+id/dateOfBirthEditText"
         android:layout_width="match_parent"

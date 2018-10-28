@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Ex01</string>
+
     <string name="full_name">Full Name</string>
     <string name="email_address">Email Address</string>
     <string name="phone_number">Phone Number</string>
@@ -11,4 +12,11 @@
     <string name="birth_date">Birthday</string>
     <string name="submit">Submit</string>
     <string name="select_avatar_image">Select Avatar Image</string>
+
+    <string name="full_name_validation_message">Please enter letter-base first and last name.</string>
+    <string name="email_address_message">Please enter your email address in the format someone@example.com.</string>
+    <string name="phone_number_validation_message">Please enter 9 digits phone number.</string>
+    <string name="password_validation_message">Incorrect password.</string>
+    <string name="gander_validation_message">Please choose a gender.</string>
+    <string name="birth_date_validation_message">Please enter your birthday in the format 01/01/2000.</string>
 </resources>
