@@ -9,6 +9,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -62,7 +67,7 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
     private boolean verifyForm(){
         boolean isVerify = false;
 
-        if(!verifyString("[a-zA-z]{2,10}",fullName.getText().toString())){
+        if(!verifyString("[a-zA-z]{2,10}+\\s+[a-zA-z]{2,10}",fullName.getText().toString())){
             displayMessage(getString(R.string.full_name_validation_message));
         }
         else if (!verifyString("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+",email.getText().toString())){
@@ -75,23 +80,36 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
         else if (!verifyPassword()){
             displayMessage(getString(R.string.password_validation_message))
         }
-        */
+*/
         else  if(ganders.getCheckedRadioButtonId() == -1){
-            displayMessage(getString(R.string.gander_validation_message))
+            displayMessage(getString(R.string.gander_validation_message));
         }
-        /*
-        else if (!verifyString("[]",birthday.getText().toString())){
+
+        else if (!verifyBirthday(birthday.getText().toString())){
             displayMessage(getString(R.string.birth_date_validation_message));
         }
-        else{
+
+        else {
             isVerify = true;
         }
-        */
         return isVerify;
     }
 
     public boolean verifyBirthday(String str){
-        ,
+        Log.e(TAG,"verifyBirthday(string*) >>");
+        boolean isVerify = false;
+        int minAge = 6;
+        int maxAge = 120;
+        //check if the month day are valid and the year in the format of 4 digit
+        if (verifyString("(0?[1-9]|[12][0-9]|3[01])[\\-./](0?[1-9]|1[012])[\\-./]\\d{4}$", str)){
+            //make sure that the user is in the age range
+            String yearStr = str.split("[\\-./]")[2];
+            int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+            int age = thisYear - Integer.parseInt(yearStr);
+            isVerify = ( age>=minAge && age<=maxAge );
+        }
+        Log.e(TAG, "verifyBirthday(string*) return: " + isVerify);
+        return isVerify;
     }
 
     public boolean verifyString(String regExpn, String str){
