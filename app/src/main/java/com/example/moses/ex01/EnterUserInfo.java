@@ -1,10 +1,14 @@
 package com.example.moses.ex01;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +23,9 @@ import java.util.regex.Pattern;
 
 public class EnterUserInfo extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = "EnterUserInfoActivity";
+    static final int REQUEST_IMAGE_GET = 1;
 
+    ImageView avatarImage;
     Button selectAvatarImage;
     TextView fullName;
     TextView email;
@@ -40,6 +46,7 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
 
     private void connectComp(){
         Log.e(TAG,"connectComp() >>");
+        avatarImage = findViewById(R.id.avatarImageView);
         selectAvatarImage = findViewById(R.id.selectAvatarImageButton);
         selectAvatarImage.setOnClickListener(this);
         fullName = findViewById(R.id.fullNameEditText);
@@ -65,7 +72,7 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
             break;
             case R.id.selectAvatarImageButton:
                 Log.e(TAG,"selectAvatarImageButton was clicked");
-                
+                selectImage();
                 break;
         }
         Log.e(TAG,"onClick() <<");
@@ -136,5 +143,21 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
     public void displayMessage(String message) {
         Log.e(TAG,"Toast Message: "+message);
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+    public void selectImage() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, REQUEST_IMAGE_GET);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
+            Uri fullPhotoUri = data.getData();
+            avatarImage.setImageURI(fullPhotoUri);
+        }
     }
 }
