@@ -14,7 +14,7 @@
         app:srcCompat="@drawable/photo_camera" />
 
     <Button
-        android:id="@+id/selectAvatarImgeButton"
+        android:id="@+id/selectAvatarImageButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

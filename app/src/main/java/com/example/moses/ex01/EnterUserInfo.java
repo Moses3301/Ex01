@@ -40,7 +40,7 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
 
     private void connectComp(){
         Log.e(TAG,"connectComp() >>");
-        selectAvatarImage = findViewById(R.id.selectAvatarImgeButton);
+        selectAvatarImage = findViewById(R.id.selectAvatarImageButton);
         selectAvatarImage.setOnClickListener(this);
         fullName = findViewById(R.id.fullNameEditText);
         email = findViewById(R.id.emailEditText);
@@ -55,17 +55,17 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         Log.e(TAG,"onClick() >>");
-        //TODO: spread to cases
         switch(v.getId()){
             case R.id.submitButton:
                 Log.e(TAG,"submitButton was clicked");
                 if (verifyForm())
                 {
-
+                
                 }
             break;
-            case R.id.selectAvatarImgeButton:
-                Log.e(TAG,"selectAvatarImgeButton was clicked");
+            case R.id.selectAvatarImageButton:
+                Log.e(TAG,"selectAvatarImageButton was clicked");
+                
                 break;
         }
         Log.e(TAG,"onClick() <<");
