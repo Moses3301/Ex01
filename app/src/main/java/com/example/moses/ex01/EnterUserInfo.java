@@ -25,6 +25,14 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
     public static final String TAG = "EnterUserInfoActivity";
     static final int REQUEST_IMAGE_GET = 1;
 
+    public static final String AVARAR_EXTRA_MESSAGE = "com.example.moses.ex01.EnterUserInfo.AVATAR";
+    public static final String NAME_EXTRA_MESSAGE = "com.example.moses.ex01.EnterUserInfo.NAME";
+    public static final String EMAIL_EXTRA_MESSAGE = "com.example.moses.ex01.EnterUserInfo.EMAIL";
+    public static final String PHONE_EXTRA_MESSAGE = "com.example.moses.ex01.EnterUserInfo.PHONE";
+    public static final String PASS_EXTRA_MESSAGE = "com.example.moses.ex01.EnterUserInfo.PASS";
+    public static final String GENDER_EXTRA_MESSAGE = "com.example.moses.ex01.EnterUserInfo.GENDER";
+    public static final String BIRTHDAY_EXTRA_MESSAGE = "com.example.moses.ex01.EnterUserInfo.BIRTHDAY";
+
     ImageView avatarImage;
     Button selectAvatarImage;
     TextView fullName;
@@ -54,6 +62,7 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
         phone = findViewById(R.id.phoneEditText);
         ganders = findViewById(R.id.gendersRadioGroup);
         birthday = findViewById(R.id.dateOfBirthEditText);
+        password = findViewById(R.id.passwordEditText);
         submit = findViewById(R.id.submitButton);
         submit.setOnClickListener(this);
         Log.e(TAG,"connectComp() <<");
@@ -90,11 +99,11 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
         else if (!verifyString("[0-9]{10}$",phone.getText().toString())){
             displayMessage(getString(R.string.phone_number_validation_message));
         }
-        /*
-        else if (!verifyPassword()){
-            displayMessage(getString(R.string.password_validation_message))
+
+        else if (!verifyPassword(password.getText().toString())){
+            displayMessage(getString(R.string.password_validation_message));
         }
-*/
+
         else  if(ganders.getCheckedRadioButtonId() == -1){
             displayMessage(getString(R.string.gander_validation_message));
         }
@@ -109,7 +118,17 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
         return isVerify;
     }
 
-    public boolean verifyBirthday(String str){
+    private  boolean verifyPassword(String str){
+        Log.e(TAG,"verifyPassword() >>");
+        boolean isVerify = false;
+        if (!str.isEmpty()){
+            isVerify = true;
+        }
+        Log.e(TAG, "verifyPassword(string*) return: " + isVerify);
+        return isVerify;
+    }
+
+    private boolean verifyBirthday(String str){
         Log.e(TAG,"verifyBirthday(string*) >>");
         boolean isVerify = false;
         int minAge = 6;
