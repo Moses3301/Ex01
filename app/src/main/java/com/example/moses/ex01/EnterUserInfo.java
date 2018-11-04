@@ -56,10 +56,17 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         Log.e(TAG,"onClick() >>");
         //TODO: spread to cases
-        //submit logic
-        if (verifyForm())
-        {
+        switch(v.getId()){
+            case R.id.submitButton:
+                Log.e(TAG,"submitButton was clicked");
+                if (verifyForm())
+                {
 
+                }
+            break;
+            case R.id.selectAvatarImgeButton:
+                Log.e(TAG,"selectAvatarImgeButton was clicked");
+                break;
         }
         Log.e(TAG,"onClick() <<");
     }
