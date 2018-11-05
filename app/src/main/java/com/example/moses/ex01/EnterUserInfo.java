@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,7 +77,7 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
                 Log.e(TAG,"submitButton was clicked");
                 if (verifyForm())
                 {
-                
+                    nextActivity();
                 }
             break;
             case R.id.selectAvatarImageButton:
@@ -181,6 +182,14 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
     }
 
     private void nextActivity(){
-        //Intent intent = new Intent(this)
+        Intent intent = new Intent(this,DisplayUserInfoActivity.class);
+        intent.putExtra("NAME",fullName.getText().toString());
+        intent.putExtra("EMAIL",email.getText().toString());
+        intent.putExtra("PHONE",phone.getText().toString());
+        intent.putExtra("PASSWORD",password.getText().toString());
+        RadioButton selectedGander = findViewById(ganders.getCheckedRadioButtonId());
+        intent.putExtra("GANDER",selectedGander.getText().toString());
+        intent.putExtra("BIRTHDAY",birthday.getText().toString());
+        startActivity(intent);
     }
 }

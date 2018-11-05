@@ -19,6 +19,7 @@ public class DisplayUserInfoActivity extends AppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_user_info);
+        initViews();
     }
 
     private void initViews(){
@@ -35,12 +36,12 @@ public class DisplayUserInfoActivity extends AppCompatActivity implements View.O
 
     private String getInfo(){
         String infoStr = String.format(
-                getString(R.string.full_name)+": \n"+
-                getString(R.string.email_address)+": \n"+
-                getString(R.string.phone_number)+": \n"+
-                getString(R.string.password)+": \n"+
-                getString(R.string.gander)+": \n"+
-                getString(R.string.birth_date)+": \n"
+                getString(R.string.full_name)+": "+ getIntent().getStringExtra("NAME")+ " \n"+
+                getString(R.string.email_address)+": "+ getIntent().getStringExtra("EMAIL")+ " \n"+
+                getString(R.string.phone_number)+": "+ getIntent().getStringExtra("PHONE")+ " \n"+
+                getString(R.string.password)+": "+ getIntent().getStringExtra("PASSWORD")+ " \n"+
+                getString(R.string.gander)+": "+ getIntent().getStringExtra("GANDER")+ " \n"+
+                getString(R.string.birth_date)+": "+ getIntent().getStringExtra("BIRTHDAY")+ " \n"
         );
         return infoStr;
     }
