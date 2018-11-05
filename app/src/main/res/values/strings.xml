@@ -21,4 +21,7 @@
     <string name="birth_date_validation_message">Please enter your birthday in the format 01/01/2000.</string>
     <string name="app_title">Assignment #1</string>
     <string name="name1">Moshe Haina</string>
+    <string name="user_details">User Details:</string>
+    <string name="dial">Dial</string>
+    <string name="send_mail">Send Mail</string>
 </resources>

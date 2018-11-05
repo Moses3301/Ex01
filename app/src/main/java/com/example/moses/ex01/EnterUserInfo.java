@@ -48,11 +48,11 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
         Log.e(TAG,"onCreate() >>");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_user_info);
-        connectComp();
+        initViews();
         Log.e(TAG,"onCreate() <<");
     }
 
-    private void connectComp(){
+    private void initViews(){
         Log.e(TAG,"connectComp() >>");
         avatarImage = findViewById(R.id.avatarImageView);
         selectAvatarImage = findViewById(R.id.selectAvatarImageButton);
@@ -145,7 +145,7 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
         return isVerify;
     }
 
-    public boolean verifyString(String regExpn, String str){
+    private boolean verifyString(String regExpn, String str){
         Log.e(TAG,"verifyString(string*,string*) >>");
         boolean isVerify = false;
 
@@ -164,7 +164,7 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
-    public void selectImage() {
+    private void selectImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -178,5 +178,9 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
             Uri fullPhotoUri = data.getData();
             avatarImage.setImageURI(fullPhotoUri);
         }
+    }
+
+    private void nextActivity(){
+        //Intent intent = new Intent(this)
     }
 }
