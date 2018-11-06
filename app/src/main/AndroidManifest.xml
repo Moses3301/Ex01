@@ -17,7 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".EnterUserInfo" />
-        <activity android:name=".DisplayUserInfoActivity"></activity>
+        <activity android:name=".DisplayUserInfoActivity"
+            android:parentActivityName=".EnterUserInfo">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EnterUserInfo" />
+        </activity>
     </application>
 
 </manifest>
