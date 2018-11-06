@@ -90,8 +90,8 @@ public class DisplayUserInfoActivity extends AppCompatActivity implements View.O
     private void sendEmail(){
         Log.e(TAG,"sendEmail() >>");
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_EMAIL, getIntent().getStringExtra(EnterUserInfo.EMAIL_EXTRA_MESSAGE));
+        intent.setData(Uri.parse("mailto:"+getIntent().getStringExtra(EnterUserInfo.EMAIL_EXTRA_MESSAGE)));
+        //intent.putExtra(Intent.EXTRA_EMAIL, getIntent().getStringExtra(EnterUserInfo.EMAIL_EXTRA_MESSAGE));
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
