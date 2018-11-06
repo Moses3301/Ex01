@@ -1,5 +1,7 @@
 package com.example.moses.ex01;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +25,7 @@ public class DisplayUserInfoActivity extends AppCompatActivity implements View.O
     }
 
     private void initViews(){
-        avatar = findViewById(R.id.avatarImageView);
+        avatar = findViewById(R.id.udAvatarImage);
         info = findViewById(R.id.infoTextView);
         dial = findViewById(R.id.dialButton);
         sendMail = findViewById(R.id.sendMailButton);
@@ -35,13 +37,19 @@ public class DisplayUserInfoActivity extends AppCompatActivity implements View.O
     }
 
     private String getInfo(){
+        Bundle bundle = getIntent().getExtras();
+        //getting the avatar image
+        byte[] b = bundle.getByteArray(EnterUserInfo.AVARAR_EXTRA_MESSAGE);
+        Bitmap bmp = BitmapFactory.decodeByteArray(b, 0, b.length);
+        avatar.setImageBitmap(bmp);
+
         String infoStr = String.format(
-                getString(R.string.full_name)+": "+ getIntent().getStringExtra(EnterUserInfo.NAME_EXTRA_MESSAGE)+ " \n"+
-                getString(R.string.email_address)+": "+ getIntent().getStringExtra(EnterUserInfo.EMAIL_EXTRA_MESSAGE)+ " \n"+
-                getString(R.string.phone_number)+": "+ getIntent().getStringExtra(EnterUserInfo.PHONE_EXTRA_MESSAGE)+ " \n"+
-                getString(R.string.password)+": "+ getIntent().getStringExtra(EnterUserInfo.PASS_EXTRA_MESSAGE)+ " \n"+
-                getString(R.string.gander)+": "+ getIntent().getStringExtra(EnterUserInfo.GENDER_EXTRA_MESSAGE)+ " \n"+
-                getString(R.string.birth_date)+": "+ getIntent().getStringExtra(EnterUserInfo.BIRTHDAY_EXTRA_MESSAGE)+ " \n"
+                getString(R.string.full_name)+": "+ bundle.getString(EnterUserInfo.NAME_EXTRA_MESSAGE)+ " \n"+
+                getString(R.string.email_address)+": "+ bundle.getString(EnterUserInfo.EMAIL_EXTRA_MESSAGE)+ " \n"+
+                getString(R.string.phone_number)+": "+ bundle.getString(EnterUserInfo.PHONE_EXTRA_MESSAGE)+ " \n"+
+                getString(R.string.password)+": "+ bundle.getString(EnterUserInfo.PASS_EXTRA_MESSAGE)+ " \n"+
+                getString(R.string.gander)+": "+ bundle.getString(EnterUserInfo.GENDER_EXTRA_MESSAGE)+ " \n"+
+                getString(R.string.birth_date)+": "+ bundle.getString(EnterUserInfo.BIRTHDAY_EXTRA_MESSAGE)+ " \n"
         );
         return infoStr;
     }

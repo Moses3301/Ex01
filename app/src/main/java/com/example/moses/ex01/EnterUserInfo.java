@@ -2,6 +2,9 @@ package com.example.moses.ex01;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
@@ -183,6 +187,14 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
 
     private void nextActivity(){
         Intent intent = new Intent(this,DisplayUserInfoActivity.class);
+        //send the avatar
+        Drawable drawable = avatarImage.getDrawable();
+        Bitmap bitmap= ((BitmapDrawable)drawable).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        intent.putExtra(AVARAR_EXTRA_MESSAGE, b);
+
         intent.putExtra(NAME_EXTRA_MESSAGE,fullName.getText().toString());
         intent.putExtra(EMAIL_EXTRA_MESSAGE,email.getText().toString());
         intent.putExtra(PHONE_EXTRA_MESSAGE,phone.getText().toString());
