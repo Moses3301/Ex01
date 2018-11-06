@@ -36,12 +36,12 @@ public class DisplayUserInfoActivity extends AppCompatActivity implements View.O
 
     private String getInfo(){
         String infoStr = String.format(
-                getString(R.string.full_name)+": "+ getIntent().getStringExtra("NAME")+ " \n"+
-                getString(R.string.email_address)+": "+ getIntent().getStringExtra("EMAIL")+ " \n"+
-                getString(R.string.phone_number)+": "+ getIntent().getStringExtra("PHONE")+ " \n"+
-                getString(R.string.password)+": "+ getIntent().getStringExtra("PASSWORD")+ " \n"+
-                getString(R.string.gander)+": "+ getIntent().getStringExtra("GANDER")+ " \n"+
-                getString(R.string.birth_date)+": "+ getIntent().getStringExtra("BIRTHDAY")+ " \n"
+                getString(R.string.full_name)+": "+ getIntent().getStringExtra(EnterUserInfo.NAME_EXTRA_MESSAGE)+ " \n"+
+                getString(R.string.email_address)+": "+ getIntent().getStringExtra(EnterUserInfo.EMAIL_EXTRA_MESSAGE)+ " \n"+
+                getString(R.string.phone_number)+": "+ getIntent().getStringExtra(EnterUserInfo.PHONE_EXTRA_MESSAGE)+ " \n"+
+                getString(R.string.password)+": "+ getIntent().getStringExtra(EnterUserInfo.PASS_EXTRA_MESSAGE)+ " \n"+
+                getString(R.string.gander)+": "+ getIntent().getStringExtra(EnterUserInfo.GENDER_EXTRA_MESSAGE)+ " \n"+
+                getString(R.string.birth_date)+": "+ getIntent().getStringExtra(EnterUserInfo.BIRTHDAY_EXTRA_MESSAGE)+ " \n"
         );
         return infoStr;
     }

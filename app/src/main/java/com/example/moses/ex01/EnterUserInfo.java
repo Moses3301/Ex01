@@ -183,13 +183,13 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
 
     private void nextActivity(){
         Intent intent = new Intent(this,DisplayUserInfoActivity.class);
-        intent.putExtra("NAME",fullName.getText().toString());
-        intent.putExtra("EMAIL",email.getText().toString());
-        intent.putExtra("PHONE",phone.getText().toString());
-        intent.putExtra("PASSWORD",password.getText().toString());
+        intent.putExtra(NAME_EXTRA_MESSAGE,fullName.getText().toString());
+        intent.putExtra(EMAIL_EXTRA_MESSAGE,email.getText().toString());
+        intent.putExtra(PHONE_EXTRA_MESSAGE,phone.getText().toString());
+        intent.putExtra(PASS_EXTRA_MESSAGE,password.getText().toString());
         RadioButton selectedGander = findViewById(ganders.getCheckedRadioButtonId());
-        intent.putExtra("GANDER",selectedGander.getText().toString());
-        intent.putExtra("BIRTHDAY",birthday.getText().toString());
+        intent.putExtra(GENDER_EXTRA_MESSAGE,selectedGander.getText().toString());
+        intent.putExtra(BIRTHDAY_EXTRA_MESSAGE,birthday.getText().toString());
         startActivity(intent);
     }
 }
