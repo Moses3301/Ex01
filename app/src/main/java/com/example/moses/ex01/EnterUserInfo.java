@@ -39,6 +39,7 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
     public static final String BIRTHDAY_EXTRA_MESSAGE = "com.example.moses.ex01.EnterUserInfo.BIRTHDAY";
 
     ImageView avatarImage;
+    Uri avatarUri;
     Button selectAvatarImage;
     TextView fullName;
     TextView email;
@@ -181,20 +182,19 @@ public class EnterUserInfo extends AppCompatActivity implements View.OnClickList
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
             Uri fullPhotoUri = data.getData();
-            avatarImage.setImageURI(fullPhotoUri);
+            setAvatarImage(fullPhotoUri);
         }
+    }
+
+    private void setAvatarImage(Uri uri){
+        avatarUri = uri;
+        avatarImage.setImageURI(avatarUri);
     }
 
     private void nextActivity(){
         Intent intent = new Intent(this,DisplayUserInfoActivity.class);
-        //send the avatar
-        Drawable drawable = avatarImage.getDrawable();
-        Bitmap bitmap= ((BitmapDrawable)drawable).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        byte[] b = baos.toByteArray();
-        intent.putExtra(AVARAR_EXTRA_MESSAGE, b);
 
+        intent.putExtra(AVARAR_EXTRA_MESSAGE,avatarUri.toString());
         intent.putExtra(NAME_EXTRA_MESSAGE,fullName.getText().toString());
         intent.putExtra(EMAIL_EXTRA_MESSAGE,email.getText().toString());
         intent.putExtra(PHONE_EXTRA_MESSAGE,phone.getText().toString());

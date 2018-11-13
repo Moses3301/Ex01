@@ -38,6 +38,9 @@ public class DisplayUserInfoActivity extends AppCompatActivity implements View.O
 
         info.setText(getInfo());
 
+        Uri avatarUri = Uri.parse(getIntent().getStringExtra(EnterUserInfo.AVARAR_EXTRA_MESSAGE));
+        avatar.setImageURI(avatarUri);
+
         dial.setOnClickListener(this);
         sendMail.setOnClickListener(this);
         Log.e(TAG,"initViews() <<");
@@ -46,11 +49,6 @@ public class DisplayUserInfoActivity extends AppCompatActivity implements View.O
     private String getInfo(){
         Log.e(TAG,"getInfo() >>");
         Bundle bundle = getIntent().getExtras();
-        //getting the avatar image
-        byte[] b = bundle.getByteArray(EnterUserInfo.AVARAR_EXTRA_MESSAGE);
-        Bitmap bmp = BitmapFactory.decodeByteArray(b, 0, b.length);
-        avatar.setImageBitmap(bmp);
-
         String infoStr = String.format(
                 getString(R.string.full_name)+": "+ bundle.getString(EnterUserInfo.NAME_EXTRA_MESSAGE)+ " \n"+
                 getString(R.string.email_address)+": "+ bundle.getString(EnterUserInfo.EMAIL_EXTRA_MESSAGE)+ " \n"+
